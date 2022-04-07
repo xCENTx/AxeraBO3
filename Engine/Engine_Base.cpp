@@ -223,158 +223,107 @@ namespace Engine_Base
 		procID = Utils::GetProcId("BlackOps3.exe");
 		if (procID < 1)
 		{
-			///*
-			//*	Player 1 booleans
-			//*/
-			//infiniteHealth = false;
-			//Player->Disable_GodMode(PlayerOffsets.player1Index);
-			//infiniteClipAmmo = false;
-			//infiniteStockAmmo = false;
-			//infinitePoints = false;
-			//alwaysInstaKill = false;
-			//noRecoil_On = false;
-			//Player->Disable_No_Recoil();
-			//rapidFire = false;
-			//jumpHeight = false;
-			//zombieTP = false;
-			//extraZombiesTP = false;
-			//tpAllZombies = false;
-			//p1WCycle = false;
-			///*
-			//*	Player 2 booleans
-			//*/
-			//p2infiniteHealth = false;
-			//Player->Disable_GodMode(PlayerOffsets.player_2_Index);
-			//p2infiniteClipAmmo = false;
-			//p2infiniteStockAmmo = false;
-			//p2infinitePoints = false;
-			//p2RapidFire = false;
-			//p2WCycle = false;
-			///*
-			//*	Player 3 booleans
-			//*/
-			//p3infiniteHealth = false;
-			//Player->Disable_GodMode(PlayerOffsets.player_3_Index);
-			//p3infiniteClipAmmo = false;
-			//p3infiniteStockAmmo = false;
-			//p3infinitePoints = false;
-			//p3RapidFire = false;
-			//p3WCycle = false;
-			///*
-			//*	Player 4 booleans
-			//*/
-			//p4infiniteHealth = false;
-			//Player->Disable_GodMode(PlayerOffsets.player_4_Index);
-			//p4infiniteAmmo = false;
-			//p4infiniteClipAmmo = false;
-			//p4infiniteStockAmmo = false;
-			//p4infinitePoints = false;
-			//p4RapidFire = false;
-			//p4WCycle = false;
 			exit(0);
 		}
 		if (GetAsyncKeyState(VK_DELETE))
 		{
-			///*
-			//*	Player 1 booleans
-			//*/
-			//infiniteHealth = false;
-			//Player->Disable_GodMode(PlayerOffsets.player1Index);
-			//infiniteClipAmmo = false;
-			//infiniteStockAmmo = false;
-			//infinitePoints = false;
-			//alwaysInstaKill = false;
-			//noRecoil_On = false;
-			//Player->Disable_No_Recoil();
-			//rapidFire = false;
-			//jumpHeight = false;
-			//zombieTP = false;
-			//extraZombiesTP = false;
-			//tpAllZombies = false;
-			//p1WCycle = false;
-			///*
-			//*	Player 2 booleans
-			//*/
-			//p2infiniteHealth = false;
-			//Player->Disable_GodMode(PlayerOffsets.player_2_Index);
-			//p2infiniteClipAmmo = false;
-			//p2infiniteStockAmmo = false;
-			//p2infinitePoints = false;
-			//p2RapidFire = false;
-			//p2WCycle = false;
-			///*
-			//*	Player 3 booleans
-			//*/
-			//p3infiniteHealth = false;
-			//Player->Disable_GodMode(PlayerOffsets.player_3_Index);
-			//p3infiniteClipAmmo = false;
-			//p3infiniteStockAmmo = false;
-			//p3infinitePoints = false;
-			//p3RapidFire = false;
-			//p3WCycle = false;
-			///*
-			//*	Player 4 booleans
-			//*/
-			//p4infiniteHealth = false;
-			//Player->Disable_GodMode(PlayerOffsets.player_4_Index);
-			//p4infiniteAmmo = false;
-			//p4infiniteClipAmmo = false;
-			//p4infiniteStockAmmo = false;
-			//p4infinitePoints = false;
-			//p4RapidFire = false;
-			//p4WCycle = false;
+			/*
+			*	Player 1 booleans
+			*/
+			FeatureBools.bP1InfiniteHealth = false;
+			Player->DisableGodMode(PlayerOffsets.iPlayer1Index);
+			FeatureBools.bP1InfiniteClipAmmo = false;
+			FeatureBools.bP1InfiniteStockAmmo = false;
+			FeatureBools.bP1InfinitePoints = false;
+			FeatureBools.bP1AlwaysInstaKill = false;
+			FeatureBools.bNoRecoilOn = false;
+			Player->DisableNoRecoil();
+			FeatureBools.bP1RapidFire = false;
+			FeatureBools.bP1JumpHeight = false;
+			FeatureBools.bZombieTP = false;
+			FeatureBools.bExtraZombiesTP = false;
+			FeatureBools.bTPAllZombies = false;
+			FeatureBools.bP1WCycle = false;
+			/*
+			*	Player 2 booleans
+			*/
+			FeatureBools.bP2InfiniteHealth = false;
+			Player->DisableGodMode(PlayerOffsets.iPlayer2Index);
+			FeatureBools.bP2InfiniteClipAmmo = false;
+			FeatureBools.bP2InfiniteStockAmmo = false;
+			FeatureBools.bP2InfinitePoints = false;
+			FeatureBools.bP2RapidFire = false;
+			FeatureBools.bP2WCycle = false;
+			/*
+			*	Player 3 booleans
+			*/
+			FeatureBools.bP3InfiniteHealth = false;
+			Player->DisableGodMode(PlayerOffsets.iPlayer3Index);
+			FeatureBools.bP3InfiniteClipAmmo = false;
+			FeatureBools.bP3InfiniteStockAmmo = false;
+			FeatureBools.bP3InfinitePoints = false;
+			FeatureBools.bP3RapidFire = false;
+			FeatureBools.bP3WCycle = false;
+			/*
+			*	Player 4 booleans
+			*/
+			FeatureBools.bP4InfiniteHealth = false;
+			Player->DisableGodMode(PlayerOffsets.iPlayer4Index);
+			FeatureBools.bP4InfiniteClipAmmo = false;
+			FeatureBools.bP4InfiniteStockAmmo = false;
+			FeatureBools.bP4InfinitePoints = false;
+			FeatureBools.bP4RapidFire = false;
+			FeatureBools.bP4WCycle = false;
 		}
 		if (GetAsyncKeyState(VK_HOME))
 		{
-			///*
-			//*	Player 1 booleans
-			//*/
-			//infiniteHealth = false;
-			//Player->Disable_GodMode(PlayerOffsets.player1Index);
-			//infiniteClipAmmo = false;
-			//infiniteStockAmmo = false;
-			//infinitePoints = false;
-			//alwaysInstaKill = false;
-			//noRecoil_On = false;
-			//noRecoil_Off = false;
-			//Player->Disable_No_Recoil();
-			//rapidFire = false;
-			//jumpHeight = false;
-			//zombieTP = false;
-			//extraZombiesTP = false;
-			//tpAllZombies = false;
-			//p1WCycle = false;
-			///*
-			//*	Player 2 booleans
-			//*/
-			//p2infiniteHealth = false;
-			//Player->Disable_GodMode(PlayerOffsets.player_2_Index);
-			//p2infiniteClipAmmo = false;
-			//p2infiniteStockAmmo = false;
-			//p2infinitePoints = false;
-			//p2RapidFire = false;
-			//p2WCycle = false;
-			///*
-			//*	Player 3 booleans
-			//*/
-			//p3infiniteHealth = false;
-			//Player->Disable_GodMode(PlayerOffsets.player_3_Index);
-			//p3infiniteClipAmmo = false;
-			//p3infiniteStockAmmo = false;
-			//p3infinitePoints = false;
-			//p3RapidFire = false;
-			//p3WCycle = false;
-			///*
-			//*	Player 4 booleans
-			//*/
-			//p4infiniteHealth = false;
-			//Player->Disable_GodMode(PlayerOffsets.player_4_Index);
-			//p4infiniteAmmo = false;
-			//p4infiniteClipAmmo = false;
-			//p4infiniteStockAmmo = false;
-			//p4infinitePoints = false;
-			//p4RapidFire = false;
-			//p4WCycle = false;
+			/*
+			*	Player 1 booleans
+			*/
+			FeatureBools.bP1InfiniteHealth = false;
+			Player->DisableGodMode(PlayerOffsets.iPlayer1Index);
+			FeatureBools.bP1InfiniteClipAmmo = false;
+			FeatureBools.bP1InfiniteStockAmmo = false;
+			FeatureBools.bP1InfinitePoints = false;
+			FeatureBools.bP1AlwaysInstaKill = false;
+			FeatureBools.bNoRecoilOn = false;
+			Player->DisableNoRecoil();
+			FeatureBools.bP1RapidFire = false;
+			FeatureBools.bP1JumpHeight = false;
+			FeatureBools.bZombieTP = false;
+			FeatureBools.bExtraZombiesTP = false;
+			FeatureBools.bTPAllZombies = false;
+			FeatureBools.bP1WCycle = false;
+			/*
+			*	Player 2 booleans
+			*/
+			FeatureBools.bP2InfiniteHealth = false;
+			Player->DisableGodMode(PlayerOffsets.iPlayer2Index);
+			FeatureBools.bP2InfiniteClipAmmo = false;
+			FeatureBools.bP2InfiniteStockAmmo = false;
+			FeatureBools.bP2InfinitePoints = false;
+			FeatureBools.bP2RapidFire = false;
+			FeatureBools.bP2WCycle = false;
+			/*
+			*	Player 3 booleans
+			*/
+			FeatureBools.bP3InfiniteHealth = false;
+			Player->DisableGodMode(PlayerOffsets.iPlayer3Index);
+			FeatureBools.bP3InfiniteClipAmmo = false;
+			FeatureBools.bP3InfiniteStockAmmo = false;
+			FeatureBools.bP3InfinitePoints = false;
+			FeatureBools.bP3RapidFire = false;
+			FeatureBools.bP3WCycle = false;
+			/*
+			*	Player 4 booleans
+			*/
+			FeatureBools.bP4InfiniteHealth = false;
+			Player->DisableGodMode(PlayerOffsets.iPlayer4Index);
+			FeatureBools.bP4InfiniteClipAmmo = false;
+			FeatureBools.bP4InfiniteStockAmmo = false;
+			FeatureBools.bP4InfinitePoints = false;
+			FeatureBools.bP4RapidFire = false;
+			FeatureBools.bP4WCycle = false;
 			exit(0);
 		}
 	}
