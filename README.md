@@ -1,2 +1,11 @@
-# AxeraBO3
-Axera.Digital's BO3 (T7) External Zombies Tool
+# [ Axera BO3 Zombie Tool ]
+Generate Random Strings in Style
+
+## Features
+[ COMING SOON ]
+
+## Preview
+[ COMING SOON ]
+
+## NOTE
+[ COMING SOON ]
