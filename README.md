@@ -2,7 +2,20 @@
 This repository features an external trainer base for Call of Duty: Black Ops 3 Zombies written in C++ utilizing DirectX 11 and the ImGui Framework.
 
 ## Features
-[ COMING SOON ]
+* GodMode ( All Players )
+* Unlimited Clip ( All Players )
+* Unlimited Stock Ammo ( All Players )
+* Unlimited Points ( All Players )
+* No Recoil ( Host Only )
+* Rapid Fire ( All Players )
+* Weapon Cycle ( All Players )
+* Modifiable Jump Height ( Host Only )
+* Jet Pack ( Host Only )
+* Zombie Insta Kill
+* Zombie Teleport
+* ESP ( 2D Box / 2D Brackets / Snapline / Crosshair / FOV Circle )
+* Zombie Counter ( Displays Zombies Alive )
+* Aimbot ( Beta / Needs Improved )
 
 ## Preview
 <details>
@@ -18,4 +31,6 @@ This repository features an external trainer base for Call of Duty: Black Ops 3 
 
 
 ## NOTE
-[ COMING SOON ]
+* Compile in Release x64 / MultiByte Char Set / C++ Language Version ( Preview - Features from the Latest C++ Working Draft (/std:c++latest) )
+* Aimbot needs improved apon. Needs a closest target function added to proplery aim at closest zombie.
+* Skeleton / Bone ESP is not added yet.
