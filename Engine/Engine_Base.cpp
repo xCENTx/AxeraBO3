@@ -274,6 +274,15 @@ namespace Engine_Base
 			FeatureBools.bP4InfinitePoints = false;
 			FeatureBools.bP4RapidFire = false;
 			FeatureBools.bP4WCycle = false;
+			/*
+			*	Extra Goodies booleans
+			*/
+			VisualSettings.bZombie2DBox = false;
+			VisualSettings.bZombie2DBrackets = false;
+			VisualSettings.bZombieSnaplines = false;
+			MiscSettings.bCrosshairFeature = false;
+			MiscSettings.bPlayerFov = false;
+			FeatureBools.bZombieCount = false;
 		}
 		if (GetAsyncKeyState(VK_HOME))
 		{
