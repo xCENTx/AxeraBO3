@@ -8,7 +8,7 @@
 	
 	-- Axera.Digital BO3 Zombie Tool ( Open Source )
 
-	-- Coded by noodle@axera.digital & sonic@axera.digital
+	-- Coded by noodle@axera.digital && sonic@axera.digital
 
 	-- Visit Us @https://axera.digital
 */
