@@ -54,7 +54,7 @@ namespace GeneralPurpose
 		if (procID < 1)
 		{
 			Message::Load_Game();
-			//exit(0);
+			exit(0);
 		}
 		else if (procID > 1)
 		{
