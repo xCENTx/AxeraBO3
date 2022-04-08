@@ -32,6 +32,6 @@ This repository features an external trainer base for Call of Duty: Black Ops 3 
 
 ## NOTE
 * Compile in Release x64 / MultiByte Char Set / C++ Language Version ( Preview - Features from the Latest C++ Working Draft (/std:c++latest) )
-* Aimbot needs improved apon. Needs a closest target function added to proplery aim at closest zombie.
+* Aimbot needs improved upon. Needs a closest target function added to properly aim at closest zombie.
 * Skeleton / Bone ESP is not added yet.
 * HOME Key = Quit / DELTE Key = Disable Features
