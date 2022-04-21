@@ -85,6 +85,13 @@ public:
 		Utils::Write((BYTE*)PlayerOffsets.playerBaseAddr + (PlayerOffsets.playerArraySizeOffset * index), (BYTE*)&PlayerOffsets.iPlayerNewPointsValue, sizeof(PlayerOffsets.iPlayerNewPointsValue), hProc);
 	}
 
+	void SetCustomPlayerPoints(int index)
+	{
+		PlayerOffsets.playerBaseAddr = Utils::PointerChain(hProc, GetPlayerEntity(), PlayerOffsets.playerPointsOffset);
+
+		Utils::Write((BYTE*)PlayerOffsets.playerBaseAddr + (PlayerOffsets.playerArraySizeOffset * index), (BYTE*)&PlayerOffsets.iPlayerNewCustomPointsValue, sizeof(PlayerOffsets.iPlayerNewCustomPointsValue), hProc);
+	}
+
 	void EnableInstaKill()
 	{
 		for (uintptr_t i = 0; i < 80; i++)

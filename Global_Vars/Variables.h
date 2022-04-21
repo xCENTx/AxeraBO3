@@ -136,6 +136,7 @@ struct Player_Offsets
 	int iPlayerHealthValue;
 	int iPlayerNewAmmoValue = 255;
 	int iPlayerNewPointsValue = 100000;
+	int iPlayerNewCustomPointsValue = 0;
 	int iPlayerNewRecoilValue = 0;
 	int iPlayerNewRapidFireValue = 0;
 	int iPlayer1NewWeaponValue;

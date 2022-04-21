@@ -197,7 +197,8 @@ namespace ImGui
 		SetupCheckboxFeatures(15, "  Godmode", &FeatureBools.bP1InfiniteHealth);
 		SetupCheckboxFeatures(15, "  Unlimited Clip", &FeatureBools.bP1InfiniteClipAmmo);
 		SetupCheckboxFeatures(15, "  Unlimited Stock", &FeatureBools.bP1InfiniteStockAmmo);
-		SetupCheckboxFeatures(15, "  Unlimited Points", &FeatureBools.bP1InfinitePoints);
+		SetupIntSliderFeature(15, 90, "  Custom Points", &FeatureBools.bP1InfinitePoints, &PlayerOffsets.iPlayerNewCustomPointsValue);
+		//SetupCheckboxFeatures(15, "  Unlimited Points", &FeatureBools.bP1InfinitePoints); ( This Hard Sets Points )
 		SetupDoubleButtonFeature(15, 100, "Recoil Off", &FeatureBools.bNoRecoilOn, "Recoil On", &FeatureBools.bNoRecoilOff);
 		SetupCheckboxFeatures(15, "  Rapid Fire", &FeatureBools.bP1RapidFire);
 		SetupIntSliderFeature(15, 75, "  Weapon Cycle", &FeatureBools.bP1WCycle, &PlayerOffsets.iPlayer1NewWeaponValue);

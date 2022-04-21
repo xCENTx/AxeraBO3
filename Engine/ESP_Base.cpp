@@ -125,66 +125,69 @@ namespace Feature_Base
 {
 	void DoESP()
 	{
-		for (uintptr_t i = 0; i < 80; i++)
+		if (Zombie->GetZombieCount() > 1)
 		{
-			Utils::Read((BYTE*)PlayerOffsets.playerPedHealthAddr + (ZombieOffsets.zombieArraySize * i), (BYTE*)&ZombieOffsets.iZombieCurrentHealthValue, sizeof(ZombieOffsets.iZombieCurrentHealthValue), hProc);
-
-			if (ZombieOffsets.iZombieCurrentHealthValue < 1)
-				continue;
-
-			Utils::Read((BYTE*)PlayerOffsets.playerXCoordAddr, (BYTE*)&PlayerOffsets.currentPlayerCoordsX, sizeof(PlayerOffsets.currentPlayerCoordsX), hProc);
-			Utils::Read((BYTE*)PlayerOffsets.playerYCoordAddr, (BYTE*)&PlayerOffsets.currentPlayerCoordsY, sizeof(PlayerOffsets.currentPlayerCoordsY), hProc);
-			Utils::Read((BYTE*)PlayerOffsets.playerZCoordAddr, (BYTE*)&PlayerOffsets.currentPlayerCoordsZ, sizeof(PlayerOffsets.currentPlayerCoordsZ), hProc);
-			Utils::Read((BYTE*)ZombieOffsets.zombiesXCoordAddr + (ZombieOffsets.zombieArraySize * i), (BYTE*)&ZombieOffsets.currentZombiesCoordsX, sizeof(ZombieOffsets.currentZombiesCoordsX), hProc);
-			Utils::Read((BYTE*)ZombieOffsets.zombiesYCoordAddr + (ZombieOffsets.zombieArraySize * i), (BYTE*)&ZombieOffsets.currentZombiesCoordsY, sizeof(ZombieOffsets.currentZombiesCoordsY), hProc);
-			Utils::Read((BYTE*)ZombieOffsets.zombiesZCoordAddr + (ZombieOffsets.zombieArraySize * i), (BYTE*)&ZombieOffsets.currentZombiesCoordsZ, sizeof(ZombieOffsets.currentZombiesCoordsZ), hProc);
-			Utils::Read((BYTE*)ZombieOffsets.zombiesHeadXCoordAddr + (ZombieOffsets.zombieArraySize * i), (BYTE*)&ZombieOffsets.currentZombiesCoordsHeadX, sizeof(ZombieOffsets.currentZombiesCoordsHeadX), hProc);
-			Utils::Read((BYTE*)ZombieOffsets.zombiesHeadYCoordAddr + (ZombieOffsets.zombieArraySize * i), (BYTE*)&ZombieOffsets.currentZombiesCoordsHeadY, sizeof(ZombieOffsets.currentZombiesCoordsHeadY), hProc);
-			Utils::Read((BYTE*)ZombieOffsets.zombiesHeadZCoordAddr + (ZombieOffsets.zombieArraySize * i), (BYTE*)&ZombieOffsets.currentZombiesCoordsHeadZ, sizeof(ZombieOffsets.currentZombiesCoordsHeadZ), hProc);
-
-			float Matrix[16];
-			Vec2 vScreen;
-			Vec2 vHead;
-			DWORD viewMatrix = 0x36772A0;
-			Utils::Read((BYTE*)GlobalVars.moduleBase + viewMatrix, (BYTE*)&Matrix, sizeof(Matrix), hProc);
-
-			Vec3 zombie_Pos = { ZombieOffsets.currentZombiesCoordsX, ZombieOffsets.currentZombiesCoordsY, ZombieOffsets.currentZombiesCoordsZ };
-			Vec3 zombie_Head_Pos = { ZombieOffsets.currentZombiesCoordsHeadX - 10.f, ZombieOffsets.currentZombiesCoordsHeadY - 20.f, ZombieOffsets.currentZombiesCoordsHeadZ - 10.f };
-			Vec3 player_Pos = { PlayerOffsets.currentPlayerCoordsX, PlayerOffsets.currentPlayerCoordsY, PlayerOffsets.currentPlayerCoordsZ };
-			AimSettings.fovLimit = FLT_MAX;
-			ZombieOffsets.zombieTarget = 0;
-
-			if (WorldToScreen(zombie_Pos, vScreen, Matrix, GlobalVars.iScreenWidth, GlobalVars.iScreenHeight))
+			for (uintptr_t i = 0; i < 80; i++)
 			{
-				if (WorldToScreen(zombie_Head_Pos, vHead, Matrix, GlobalVars.iScreenWidth, GlobalVars.iScreenHeight))
-				{
-					float headHeight = vHead.y - vScreen.y;
-					float width = headHeight / 2;
-					float center = width / -2;
-					Vec3 zombie_Coords_Total = { headHeight , width , center };
-					if (VisualSettings.bZombieSnaplines)
-					{
-						Render::Line(ImVec2(GlobalVars.iScreenWidth / 2, GlobalVars.iScreenHeight / 2), ImVec2(vScreen.x, vHead.y), VisualSettings.snaplineImColor, 1.f);
-					}
-					if (VisualSettings.bZombie2DBrackets)
-					{
-						Render::DrawBoxBrackets(ImGui::GetWindowDrawList(), vScreen.x + center, vScreen.y, width, headHeight, VisualSettings.bracketBoxImColor, 1.f);
-					}
-					if (VisualSettings.bZombie2DBox)
-					{
-						Render::DrawBox(VisualSettings.boxImColor, vScreen.x + center, vScreen.y, width, headHeight);
-					}
-					if (FeatureBools.bAimbot)
-					{
-						auto fov = Distance_Cursor(vHead);
+				Utils::Read((BYTE*)PlayerOffsets.playerPedHealthAddr + (ZombieOffsets.zombieArraySize * i), (BYTE*)&ZombieOffsets.iZombieCurrentHealthValue, sizeof(ZombieOffsets.iZombieCurrentHealthValue), hProc);
 
-						if (fov < MiscSettings.playerFovSize)
+				if (ZombieOffsets.iZombieCurrentHealthValue < 1)
+					continue;
+
+				Utils::Read((BYTE*)PlayerOffsets.playerXCoordAddr, (BYTE*)&PlayerOffsets.currentPlayerCoordsX, sizeof(PlayerOffsets.currentPlayerCoordsX), hProc);
+				Utils::Read((BYTE*)PlayerOffsets.playerYCoordAddr, (BYTE*)&PlayerOffsets.currentPlayerCoordsY, sizeof(PlayerOffsets.currentPlayerCoordsY), hProc);
+				Utils::Read((BYTE*)PlayerOffsets.playerZCoordAddr, (BYTE*)&PlayerOffsets.currentPlayerCoordsZ, sizeof(PlayerOffsets.currentPlayerCoordsZ), hProc);
+				Utils::Read((BYTE*)ZombieOffsets.zombiesXCoordAddr + (ZombieOffsets.zombieArraySize * i), (BYTE*)&ZombieOffsets.currentZombiesCoordsX, sizeof(ZombieOffsets.currentZombiesCoordsX), hProc);
+				Utils::Read((BYTE*)ZombieOffsets.zombiesYCoordAddr + (ZombieOffsets.zombieArraySize * i), (BYTE*)&ZombieOffsets.currentZombiesCoordsY, sizeof(ZombieOffsets.currentZombiesCoordsY), hProc);
+				Utils::Read((BYTE*)ZombieOffsets.zombiesZCoordAddr + (ZombieOffsets.zombieArraySize * i), (BYTE*)&ZombieOffsets.currentZombiesCoordsZ, sizeof(ZombieOffsets.currentZombiesCoordsZ), hProc);
+				Utils::Read((BYTE*)ZombieOffsets.zombiesHeadXCoordAddr + (ZombieOffsets.zombieArraySize * i), (BYTE*)&ZombieOffsets.currentZombiesCoordsHeadX, sizeof(ZombieOffsets.currentZombiesCoordsHeadX), hProc);
+				Utils::Read((BYTE*)ZombieOffsets.zombiesHeadYCoordAddr + (ZombieOffsets.zombieArraySize * i), (BYTE*)&ZombieOffsets.currentZombiesCoordsHeadY, sizeof(ZombieOffsets.currentZombiesCoordsHeadY), hProc);
+				Utils::Read((BYTE*)ZombieOffsets.zombiesHeadZCoordAddr + (ZombieOffsets.zombieArraySize * i), (BYTE*)&ZombieOffsets.currentZombiesCoordsHeadZ, sizeof(ZombieOffsets.currentZombiesCoordsHeadZ), hProc);
+
+				float Matrix[16];
+				Vec2 vScreen;
+				Vec2 vHead;
+				DWORD viewMatrix = 0x36772A0;
+				Utils::Read((BYTE*)GlobalVars.moduleBase + viewMatrix, (BYTE*)&Matrix, sizeof(Matrix), hProc);
+
+				Vec3 zombie_Pos = { ZombieOffsets.currentZombiesCoordsX, ZombieOffsets.currentZombiesCoordsY, ZombieOffsets.currentZombiesCoordsZ };
+				Vec3 zombie_Head_Pos = { ZombieOffsets.currentZombiesCoordsHeadX - 10.f, ZombieOffsets.currentZombiesCoordsHeadY - 20.f, ZombieOffsets.currentZombiesCoordsHeadZ - 10.f };
+				Vec3 player_Pos = { PlayerOffsets.currentPlayerCoordsX, PlayerOffsets.currentPlayerCoordsY, PlayerOffsets.currentPlayerCoordsZ };
+				AimSettings.fovLimit = FLT_MAX;
+				ZombieOffsets.zombieTarget = 0;
+
+				if (WorldToScreen(zombie_Pos, vScreen, Matrix, GlobalVars.iScreenWidth, GlobalVars.iScreenHeight))
+				{
+					if (WorldToScreen(zombie_Head_Pos, vHead, Matrix, GlobalVars.iScreenWidth, GlobalVars.iScreenHeight))
+					{
+						float headHeight = vHead.y - vScreen.y;
+						float width = headHeight / 2;
+						float center = width / -2;
+						Vec3 zombie_Coords_Total = { headHeight , width , center };
+						if (VisualSettings.bZombieSnaplines)
 						{
-							if (GetAsyncKeyState(VK_LMENU))
+							Render::Line(ImVec2(GlobalVars.iScreenWidth / 2, GlobalVars.iScreenHeight / 2), ImVec2(vScreen.x, vHead.y), VisualSettings.snaplineImColor, 1.f);
+						}
+						if (VisualSettings.bZombie2DBrackets)
+						{
+							Render::DrawBoxBrackets(ImGui::GetWindowDrawList(), vScreen.x + center, vScreen.y, width, headHeight, VisualSettings.bracketBoxImColor, 1.f);
+						}
+						if (VisualSettings.bZombie2DBox)
+						{
+							Render::DrawBox(VisualSettings.boxImColor, vScreen.x + center, vScreen.y, width, headHeight);
+						}
+						if (FeatureBools.bAimbot)
+						{
+							auto fov = Distance_Cursor(vHead);
+
+							if (fov < MiscSettings.playerFovSize)
 							{
-								vHead.y = vHead.y + 15.f;
-								vHead = { vHead.x, vHead.y };
-								Mouse_Aim(Smooth(vHead));
+								if (GetAsyncKeyState(VK_LMENU))
+								{
+									vHead.y = vHead.y + 15.f;
+									vHead = { vHead.x, vHead.y };
+									Mouse_Aim(Smooth(vHead));
+								}
 							}
 						}
 					}
