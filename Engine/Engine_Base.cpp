@@ -30,6 +30,7 @@ namespace Engine_Base
 				//
 				PlayerOffsets.playerZCoordAddr = Utils::PointerChain(hProc, Player->GetPlayerEntity(), PlayerOffsets.playerZCoord);
 			}
+			Sleep(1);
 		}
 	}
 	// Get Zombie Coords.
@@ -53,6 +54,7 @@ namespace Engine_Base
 				//
 				PlayerOffsets.playerPedHealthAddr = Utils::PointerChain(hProc, Zombie->GetZombieEntity(), ZombieOffsets.zombieHealthOffset);
 			}
+			Sleep(1);
 		}
 	}
 	// Features for Player 1.
