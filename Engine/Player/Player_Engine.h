@@ -133,7 +133,7 @@ public:
 	{
 		PlayerOffsets.playerNoRecoilBase = GlobalVars.moduleBase + PlayerOffsets.playerNoRecoilPtr;
 
-		Utils::Patch((BYTE*)PlayerOffsets.playerNoRecoilBase, (BYTE*)"\x84\xc0\x74\x00\x32\xc0\xe9\x00\x00\x00\x00\x48\x83\xc4", 2, hProc);
+		Utils::Patch((BYTE*)PlayerOffsets.playerNoRecoilBase, (BYTE*)"\x84\xC0", 2, hProc);
 	}
 
 	void EnablePlayerJetPck()
