@@ -135,6 +135,7 @@ public:
 		PlayerOffsets.playerNoRecoilBase = GlobalVars.moduleBase + PlayerOffsets.playerNoRecoilPtr;
 
 		Utils::Patch((BYTE*)PlayerOffsets.playerNoRecoilBase, (BYTE*)"\x84\xC0", 2, hProc);
+<<<<<<< HEAD
 	}
 
 	std::byte ReadNoRecoilValue()
@@ -144,6 +145,8 @@ public:
 		Utils::Read((BYTE*)PlayerOffsets.playerNoRecoilBase, (BYTE*)&PlayerOffsets.noRecoilValue, sizeof(PlayerOffsets.noRecoilValue), hProc);
 
 		return PlayerOffsets.noRecoilValue;
+=======
+>>>>>>> 03438a5d623f7ae877ca504c811e8c0d7828c5a8
 	}
 
 	void EnablePlayerJetPck()
@@ -164,6 +167,7 @@ public:
 
 		Utils::Write((BYTE*)PlayerOffsets.playerBaseAddr + (PlayerOffsets.playerWeaponArray * 6) + (PlayerOffsets.playerArraySizeOffset * index), (BYTE*)&playerWeaponID, sizeof(playerWeaponID), hProc);
 	}
+<<<<<<< HEAD
 
 	int IsInGame()
 	{
@@ -174,3 +178,6 @@ public:
 		return GlobalOffsets.iInGameValue;
 	}
 };
+=======
+};
+>>>>>>> 03438a5d623f7ae877ca504c811e8c0d7828c5a8
