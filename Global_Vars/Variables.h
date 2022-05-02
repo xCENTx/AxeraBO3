@@ -171,7 +171,7 @@ struct Zombie_Offsets
 	uintptr_t zombieBasePtr = 0x0A54BE48; // New
 	uintptr_t zombieBase;
 	uintptr_t zombieBaseAddr;
-	uintptr_t zombieCountPtr = 0x0A54BE40;
+	uintptr_t zombieCountPtr = 0x0A3D3A2C; // New
 	uintptr_t zombieCountBase;
 	uintptr_t zombieCountBaseAddr;
 	uintptr_t zombiesXCoordAddr;
@@ -190,7 +190,6 @@ struct Zombie_Offsets
 	std::vector <unsigned int> zombieHeadYCoord = { 0x8, 0x228 }; // New
 	std::vector <unsigned int> zombieHeadZCoord = { 0x8, 0x22C }; // New
 	std::vector <unsigned int> zombieHeadXYZCoord = { 0x8, 0x224, 0x228, 0x22C }; // New
-	std::vector <unsigned int> zombieCountOffset = { 0x3C };
 	// Zombie Feature Values
 	int iZombieCurrentHealthValue;
 	int iZombieNewHealthValue = 1;

@@ -59,9 +59,7 @@ public:
 
 	int GetZombieCount()
 	{
-		ZombieOffsets.zombieCountBaseAddr = Utils::PointerChain(hProc, GetZombieEntityCount(), ZombieOffsets.zombieCountOffset);
-
-		Utils::Read((BYTE*)ZombieOffsets.zombieCountBaseAddr, (BYTE*)&ZombieOffsets.iZombieCountValue, sizeof(ZombieOffsets.iZombieCountValue), hProc);
+		Utils::Read((BYTE*)GetZombieEntityCount(), (BYTE*)&ZombieOffsets.iZombieCountValue, sizeof(ZombieOffsets.iZombieCountValue), hProc);
 
 		return ZombieOffsets.iZombieCountValue;
 	}
