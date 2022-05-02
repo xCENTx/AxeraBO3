@@ -133,6 +133,7 @@ struct Player_Offsets
 	const int iPlayerGodModeOff = 0x8;
 	const int iPlayerNoRecoilOn = 0x75; // 3224506229
 	const int iPlayerNoRecoilOff = 0x74; // 3224506228
+	std::byte noRecoilValue;
 	int iPlayerHealthValue;
 	int iPlayerNewAmmoValue = 255;
 	int iPlayerNewPointsValue = 100000;
@@ -209,9 +210,12 @@ struct Zombie_Offsets
 
 struct Global_Offsets
 {
+	uintptr_t inGamePtr = 0x19C7A0BC;
+	uintptr_t inGameAddr;
 	uintptr_t jumpHeightPtr = 0x03079A34;
 	uintptr_t jumpHeightBase;
 	// Global Game Feature Values
+	int iInGameValue = 0;
 	float globalNewJumpHeightValue = 39.f;
 	float globalDefaultJumpHeightValue = 39.f;
 	float globalJetPackValue;

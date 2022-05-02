@@ -125,7 +125,7 @@ namespace Feature_Base
 {
 	void DoESP()
 	{
-		if (Zombie->GetZombieCount() > 1)
+		if (Player->IsInGame() > 0)
 		{
 			for (uintptr_t i = 0; i < 80; i++)
 			{

@@ -22,7 +22,7 @@ namespace Engine_Base
 	{
 		while (true)
 		{
-			if (Zombie->GetZombieCount() > 1)
+			if (Player->IsInGame() > 0)
 			{
 				PlayerOffsets.playerXCoordAddr = Utils::PointerChain(hProc, Player->GetPlayerEntity(), PlayerOffsets.playerXCoord);
 				//
@@ -38,7 +38,7 @@ namespace Engine_Base
 	{
 		while (true)
 		{
-			if (Zombie->GetZombieCount() > 1)
+			if (Player->IsInGame() > 0)
 			{
 				ZombieOffsets.zombiesXCoordAddr = Utils::PointerChain(hProc, Zombie->GetZombieEntity(), ZombieOffsets.zombieXCoord);
 				//
@@ -60,7 +60,7 @@ namespace Engine_Base
 	// Features for Player 1.
 	void Player1Features()
 	{
-		if (Zombie->GetZombieCount() > 1)
+		if (Player->IsInGame() > 0)
 		{
 			if (FeatureBools.bP1InfiniteHealth)
 			{
@@ -117,7 +117,7 @@ namespace Engine_Base
 	// Features for Player 2.
 	void Player2Features()
 	{
-		if (Zombie->GetZombieCount() > 1)
+		if (Player->IsInGame() > 0)
 		{
 			if (FeatureBools.bP2InfiniteHealth)
 			{
@@ -156,7 +156,7 @@ namespace Engine_Base
 	// Features for Player 3.
 	void Player3Features()
 	{
-		if (Zombie->GetZombieCount() > 1)
+		if (Player->IsInGame() > 0)
 		{
 			if (FeatureBools.bP3InfiniteHealth)
 			{
@@ -195,7 +195,7 @@ namespace Engine_Base
 	// Features for Player 4.
 	void Player4Features()
 	{
-		if (Zombie->GetZombieCount() > 1)
+		if (Player->IsInGame() > 0)
 		{
 			if (FeatureBools.bP4InfiniteHealth)
 			{
@@ -234,7 +234,7 @@ namespace Engine_Base
 	// Features for Zombies.
 	void ExtraGoodieFeatures()
 	{
-		if (Zombie->GetZombieCount() > 1)
+		if (Player->IsInGame() > 0)
 		{
 			if (FeatureBools.bZombieTP)
 			{
@@ -364,7 +364,7 @@ namespace Engine_Base
 			FeatureBools.bP4WCycle = false;
 			exit(0);
 		}
-		if (Zombie->GetZombieCount() < 1)
+		if (Player->IsInGame() == 0)
 		{
 			if (FeatureBools.bP1InfiniteHealth)
 			{
@@ -386,10 +386,13 @@ namespace Engine_Base
 				Player->DisableGodMode(PlayerOffsets.iPlayer4Index);
 				FeatureBools.bP4InfiniteHealth = false;
 			}
-			Player->DisableNoRecoil();
-			FeatureBools.bJetPack = false;
-			GlobalOffsets.globalJetPackValue = 0.f;
-			GlobalOffsets.globalJetPackAddValue = 8.f;
+			if (Player->ReadNoRecoilValue() == (std::byte)144)
+			{
+				Player->DisableNoRecoil();
+				FeatureBools.bJetPack = false;
+				GlobalOffsets.globalJetPackValue = 0.f;
+				GlobalOffsets.globalJetPackAddValue = 8.f;
+			}
 		}
 	}
 };

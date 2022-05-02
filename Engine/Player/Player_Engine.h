@@ -15,6 +15,7 @@
 
 #pragma once
 #include "../Zombie/Zombie_Engine.h"
+#include <iostream>
 
 ZombieEntity* Zombie;
 
@@ -133,7 +134,16 @@ public:
 	{
 		PlayerOffsets.playerNoRecoilBase = GlobalVars.moduleBase + PlayerOffsets.playerNoRecoilPtr;
 
-		Utils::Patch((BYTE*)PlayerOffsets.playerNoRecoilBase, (BYTE*)"\x84\xc0\x74\x00\x32\xc0\xe9\x00\x00\x00\x00\x48\x83\xc4", 2, hProc);
+		Utils::Patch((BYTE*)PlayerOffsets.playerNoRecoilBase, (BYTE*)"\x84\xC0", 2, hProc);
+	}
+
+	std::byte ReadNoRecoilValue()
+	{
+		PlayerOffsets.playerNoRecoilBase = GlobalVars.moduleBase + PlayerOffsets.playerNoRecoilPtr;
+
+		Utils::Read((BYTE*)PlayerOffsets.playerNoRecoilBase, (BYTE*)&PlayerOffsets.noRecoilValue, sizeof(PlayerOffsets.noRecoilValue), hProc);
+
+		return PlayerOffsets.noRecoilValue;
 	}
 
 	void EnablePlayerJetPck()
@@ -153,5 +163,14 @@ public:
 		PlayerOffsets.playerBaseAddr = Utils::PointerChain(hProc, GetPlayerEntity(), PlayerOffsets.playerSetWeaponOffset);
 
 		Utils::Write((BYTE*)PlayerOffsets.playerBaseAddr + (PlayerOffsets.playerWeaponArray * 6) + (PlayerOffsets.playerArraySizeOffset * index), (BYTE*)&playerWeaponID, sizeof(playerWeaponID), hProc);
+	}
+
+	int IsInGame()
+	{
+		GlobalOffsets.inGameAddr = GlobalVars.moduleBase + GlobalOffsets.inGamePtr;
+
+		Utils::Read((BYTE*)GlobalOffsets.inGameAddr, (BYTE*)&GlobalOffsets.iInGameValue, sizeof(GlobalOffsets.iInGameValue), hProc);
+
+		return GlobalOffsets.iInGameValue;
 	}
 };
